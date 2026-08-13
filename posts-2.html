@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · t3b06-mg-night-tip</title>
+  <meta name="description" content="t3b06-mg-night-tip에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://magok-club-hot.program-school.online/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ 
+ :root {
+ --bg-color: #142217;
+ --bg-card: #1c3322;
+ --accent: #10b981;
+ --text: #e2e8f0;
+ --text-muted: #94a3b8;
+ --font-stack: 'Pretendard', sans-serif;
+ --border: rgba(255, 255, 255, 0.08);
+ --glass-bg: rgba(255, 255, 255, 0.02);
+ --glass-border: rgba(255, 255, 255, 0.05);
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body {
+ background-color: var(--bg-color);
+ color: var(--text);
+ font-family: var(--font-stack);
+ line-height: 1.8;
+ letter-spacing: -0.01em;
+ padding: 0 24px;
+ overflow-x: hidden;
+ }
+ .wrapper {
+ max-width: 960px;
+ margin: 0 auto;
+ padding: 80px 0;
+ }
+ header {
+ border-bottom: 1px solid var(--border);
+ padding-bottom: 30px;
+ margin-bottom: 60px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+ .brand {
+ font-size: 1.6rem;
+ font-weight: 900;
+ color: #fff;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ text-decoration: none;
+ transition: color 0.3s, transform 0.3s;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ }
+ .brand:hover {
+ color: var(--accent);
+ transform: translateX(2px);
+ }
+ nav {
+ display: flex;
+ gap: 28px;
+ }
+ nav a {
+ color: var(--text-muted);
+ text-decoration: none;
+ font-size: 1rem;
+ font-weight: 700;
+ transition: color 0.3s;
+ position: relative;
+ }
+ nav a::after {
+ content: '';
+ position: absolute;
+ width: 0;
+ height: 2px;
+ bottom: -6px;
+ left: 0;
+ background-color: var(--accent);
+ transition: width 0.3s;
+ }
+ nav a:hover {
+ color: #fff;
+ }
+ nav a:hover::after {
+ width: 100%;
+ }
+ main {
+ padding-bottom: 60px;
+ }
+ .badge {
+ display: inline-block;
+ padding: 6px 14px;
+ background: rgba(255, 255, 255, 0.03);
+ border: 1px solid var(--glass-border);
+ border-radius: 20px;
+ font-size: 0.8rem;
+ font-weight: 800;
+ color: var(--accent);
+ margin-bottom: 28px;
+ text-transform: uppercase;
+ letter-spacing: 0.12em;
+ }
+ h1 {
+ font-size: 3.2rem;
+ font-weight: 900;
+ color: #fff;
+ line-height: 1.2;
+ margin-bottom: 36px;
+ letter-spacing: -0.03em;
+ background: linear-gradient(to right, #ffffff 30%, var(--accent) 100%);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ }
+ .hero-container {
+ position: relative;
+ border-radius: 20px;
+ padding: 50px;
+ background: linear-gradient(145deg, var(--bg-card) 0%, rgba(255,255,255,0.01) 100%);
+ border: 1px solid var(--glass-border);
+ margin-bottom: 60px;
+ box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+ overflow: hidden;
+ }
+ .hero-container::before {
+ content: '';
+ position: absolute;
+ top: -50%;
+ left: -50%;
+ width: 200%;
+ height: 200%;
+ background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
+ pointer-events: none;
+ }
+ .desc-block {
+ font-size: 1.18rem;
+ color: var(--text);
+ margin-bottom: 40px;
+ font-weight: 400;
+ text-align: justify;
+ }
+ .desc-block p {
+ margin-bottom: 24px;
+ text-indent: 4px;
+ }
+ .phone-badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 14px;
+ padding: 20px 40px;
+ background: linear-gradient(135deg, var(--accent) 0%, rgba(255,255,255,0.05) 200%);
+ color: #fff;
+ border-radius: 50px;
+ text-decoration: none;
+ font-weight: 900;
+ font-size: 1.3rem;
+ box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+ transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+ border: 1px solid rgba(255,255,255,0.1);
+ }
+ .phone-badge:hover {
+ transform: translateY(-3px) scale(1.02);
+ box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+ border-color: rgba(255,255,255,0.25);
+ }
+ .cards-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+ gap: 28px;
+ margin-top: 60px;
+ }
+ .card {
+ background: var(--bg-card);
+ border: 1px solid var(--border);
+ padding: 36px;
+ border-radius: 16px;
+ transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+ box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+ }
+ .card:hover {
+ border-color: var(--accent);
+ transform: translateY(-5px);
+ box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+ }
+ .card h3 {
+ font-size: 1.35rem;
+ font-weight: 800;
+ color: #fff;
+ margin-bottom: 16px;
+ }
+ .card p {
+ font-size: 1rem;
+ color: var(--text-muted);
+ line-height: 1.7;
+ }
+ .review-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 20px;
+ font-size: 0.9rem;
+ font-weight: 800;
+ border-bottom: 1px dashed var(--border);
+ padding-bottom: 12px;
+ }
+ .review-stars {
+ color: #fbbf24;
+ letter-spacing: 2px;
+ }
+ .review-nick {
+ color: #fff;
+ }
+ .review-date {
+ color: var(--text-muted);
+ }
+ footer {
+ border-top: 1px solid var(--border);
+ padding-top: 50px;
+ margin-top: 100px;
+ text-align: center;
+ font-size: 0.95rem;
+ color: var(--text-muted);
+ }
+ footer a {
+ color: var(--text-muted);
+ text-decoration: none;
+ margin: 0 14px;
+ font-weight: 700;
+ transition: color 0.3s;
+ }
+ footer a:hover {
+ color: var(--accent);
+ }
+ .blog-link {
+ display: inline-block;
+ margin-top: 28px;
+ color: var(--accent);
+ text-decoration: none;
+ font-weight: 800;
+ border-bottom: 1px solid transparent;
+ transition: border-color 0.3s, transform 0.3s;
+ }
+ .blog-link:hover {
+ border-color: var(--accent);
+ transform: translateX(3px);
+ }
+ @media(max-width: 768px) {
+ body { padding: 0 16px; }
+ .wrapper { padding: 50px 0; }
+ h1 { font-size: 2.2rem; }
+ .hero-container { padding: 28px; }
+ .phone-badge { width: 100%; justify-content: center; font-size: 1.1rem; }
+ header { flex-direction: column; gap: 20px; align-items: flex-start; }
+ nav { width: 100%; justify-content: space-between; }
+ }
+ 
+ </style>
+  <meta property="og:title" content="글 목록 (2/2) · t3b06-mg-night-tip">
+  <meta property="og:description" content="t3b06-mg-night-tip에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://magok-club-hot.program-school.online/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <a href="index.html" class="brand">👑 마곡 유흥</a>
+ <nav>
+ <a href="index.html">홈</a>
+ <a href="about.html">소개</a>
+ <a href="blog.html">블로그</a>
+ </nav>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 39개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0056.html">마곡 유흥 꿀팁 확인으로 보는 합정 노래방 추천정보 접근성</a>
+        <p class="post-item__summary">합정 지역에서 노래방을 선택할 때 가장 먼저 고려해야 할 요소는 역시 접근성과 위치의 편의성이다. 마곡 유흥 꿀팁 공유 커뮤니티에서 강조하듯, 대중교통 이용이 용이하고 유동 인구가 많은 곳을 찾는 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0057.html">마곡 유흥 꿀팁, 연남 클럽 초행자를 위한 추천 정보와 주의사항</a>
+        <p class="post-item__summary">오랜만에 친구들과의 모임을 계획하며 연남동으로 향하는 길, 번화한 거리의 활기찬 분위기 속에서 설렘을 느낄 수 있습니다. 특히 이태원이나 강남과는 또 다른 매력을 가진 연남 클럽의 문화를 처음 접하</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0058.html">마곡 유흥 꿀팁, 합정 셔츠룸 방문 시 최적의 시간대 선택 전략</a>
+        <p class="post-item__summary">많은 분들이 합정 셔츠룸을 방문할 때 시간대는 크게 중요하지 않다고 생각하는 경향이 있습니다. 그러나 실제로 셔츠룸 방문 경험의 만족도를 좌우하는 중요한 요소 중 하나가 바로 방문 시간대입니다. 언</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0059.html">마곡 유흥 꿀팁, 공덕 가라오케 인원 구성별 맞춤형 즐거움 계획</a>
+        <p class="post-item__summary">즐거운 가라오케 경험을 위해서는 단순히 좋은 시설과 최신곡만으로는 충분하지 않습니다. 함께하는 사람들의 인원 구성과 그에 맞는 공간, 분위기 조성이 중요합니다. 공덕 가라오케를 방문할 계획이라면, </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0060.html">마곡 유흥 꿀팁, 상수 마사지 업체 현명하게 비교하고 선택하는 기준</a>
+        <p class="post-item__summary">지친 몸과 마음에 활력을 불어넣고 싶을 때, 여러분은 어떤 종류의 마사지를 가장 먼저 떠올리시나요? 그리고 수많은 상수 마사지 업체들 중에서 과연 어떤 곳이 나에게 최적의 만족감을 선사할지 고민해본</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0061.html">마곡 유흥 꿀팁 확인하고 망원 노래방 추천정보 찾아가는 방법</a>
+        <p class="post-item__summary">마곡 유흥 꿀팁을 검색하는 분들이 인근 지역의 유흥 문화를 탐색할 때 가장 먼저 고려해야 할 요소는 정보의 투명성입니다. 특히 망원 지역은 다양한 소규모 업소가 밀집해 있어 신뢰할 만한 데이터를 확</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0062.html">마곡 유흥 꿀팁 적용하여 홍대 노래방 추천정보와 가격 비교하기</a>
+        <p class="post-item__summary">많은 분이 마곡 유흥 꿀팁을 익힌 뒤 홍대 지역의 유흥 업소를 방문하려고 합니다. 이때 가장 큰 고민은 바로 가격 책정 기준이 어떻게 되는가 하는 점입니다. 홍대 지역은 업소마다 가격 체계가 상이하</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0063.html">마곡 유흥 꿀팁 활용해 공덕 셔츠룸 추천정보 및 예약 절차 알아보기</a>
+        <p class="post-item__summary">마곡 유흥 꿀팁을 습득한 이들이 자주 실수하는 지점은 바로 충분한 검토 없이 예약을 서두른다는 점입니다. 공덕 지역의 셔츠룸은 운영 방식이 독특하고 규정이 엄격한 곳이 많아 실패하는 경우가 잦습니다</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0064.html">마곡 유흥 꿀팁 확인하고 연남 유흥 추천정보와 위치 접근성 파악하기</a>
+        <p class="post-item__summary">마곡 유흥 꿀팁을 익히셨다면 이제 연남 지역의 환경에 맞춰 유흥 업소를 선택할 차례입니다. 연남은 골목 곳곳에 업소가 숨어 있어 위치와 접근성을 미리 확인하는 것이 무엇보다 중요합니다. 안전하고 편</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0065.html">마곡 유흥 꿀팁 확인하고 떠나는 가라오케 추천정보 가이드</a>
+        <p class="post-item__summary">오랜만에 만난 지인들과 마곡 유흥 꿀팁을 검색하며 저녁 시간을 계획하는 분들이 많습니다. 처음 방문하는 장소에서 당황하지 않으려면 사전 정보 파악이 필수적인데, 특히 공간의 분위기와 서비스 방식을 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0066.html">마곡 유흥 꿀팁 활용해서 알아보는 유흥 업소 방문 시간대</a>
+        <p class="post-item__summary">많은 이들이 밤 시간대의 마곡 유흥 꿀팁에 대해 잘못된 선입견을 가지고 있습니다. 흔히 늦은 새벽이 가장 활기찰 것이라고 오해하지만, 실제 업계의 흐름은 그보다 일찍 시작되는 경우가 많습니다. 막연</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/guide-002-f9zx7t.html">유흥 해결 방법 총정리</a>
+        <p class="post-item__summary">마곡 지역에서 유흥 관련 정보를 찾거나 최선의 선택을 하고 싶을 때 알아두어야 할 핵심 안내 사항을 정리해 드립니다. 마곡 유흥 꿀팁을 미리 숙지하면 예상치 못한 불편을 줄이고 상황에 맞춰 만족스러</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/interview-002-10u7u73.html">마곡 유흥 꿀팁</a>
+        <p class="post-item__summary">마곡 지구는 최근 신도시 개발과 함께 다양한 문화 및 유흥 공간이 급부상하고 있는 지역입니다. 깔끔하게 정돈된 거리와 Modern 한 분위기의 상가가 밀집해 있어 저녁 시간대나 주말에 많은 방문객이</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-1.html">마곡 유흥 꿀팁</a>
+        <p class="post-item__summary">마곡 지역의 유흥 문화를 이해하고자 할 때, 단순히 장소만을 나열하는 것은 충분하지 않습니다. 각 업소의 분위기와 서비스의 취향을 파악하는 것이 중요합니다. 이와 관련하여 연남 지역의 마사지 정보는</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-2.html">마곡 유흥 꿀팁 정보</a>
+        <p class="post-item__summary">마곡 지역의 유흥 문화를 이해하고 효율적으로 계획하려면 현지 환경과 분위기를 사전에 파악하는 것이 중요합니다. 이 게시물은 마곡 지역에서 이루어지는 다양한 모임과 여가 활동에 참고할 수 있는 기본적</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-1.html">마곡 유흥 꿀팁 안내</a>
+        <p class="post-item__summary">마곡 지역 유흥 문화를 이해하려면 전반적인 분위기 파악이 우선됩니다. 이 지역은 여러 종류의 업소가 밀집해 있어 접근성이 좋으며, 다양한 취향에 맞는 선택지가 존재합니다. 처음 방문하는 이용자에게는</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-2.html">마곡 유흥 꿀팁</a>
+        <p class="post-item__summary">마곡 지역은 다양한 놀이 문화를 보유하고 있어 많은 분들이 찾습니다. 방문 전에는 사전에 충분한 계획을 세우는 것이 중요하며, 특히 위치와 교통 접근성에 대해 꼼꼼히 확인해야 합니다. 이 지역은 빠</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">마곡 유흥 꿀팁과 두피 관리 연계 정보</a>
+        <p class="post-item__summary">마곡의 유흥 공간을 방문할 때는 외부의 밝은 조명과 시끄러운 소음으로부터 점차적으로 거리가 가까워지는 과정을 겪게 됩니다. 이때 방문객들은 긴장된 상태를 풀어가면서 편안한 분위기를 맞이하게 되며, </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-001.html">마곡 유흥 꿀팁 솔직 후기</a>
+        <p class="post-item__summary">Tôi nhớ như in những ngày đầu khi tôi bắt đầu khám phá thế giới của 다크소울. Đó là một trải nghiệm đầy thử thách </p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
